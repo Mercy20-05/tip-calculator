@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tip Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main class="calculator-card">
+    <!-- Left Column: Inputs -->
+    <section class="input-section">
+      <!-- Bill Input -->
+      <div class="form-group">
+        <label for="bill-input">Bill</label>
+        <div class="input-wrapper">
+          <span class="currency-symbol">$</span>
+          <input 
+            type="number" 
+            id="bill-input" 
+            placeholder="0" 
+            min="0" 
+            step="0.01" 
+          />
+        </div>
+      </div>
+
+      <!-- Tip Selection -->
+      <div class="form-group">
+        <label>Select Tip %</label>
+        <div class="tip-grid">
+          <button type="button" class="tip-btn" data-tip="5">5%</button>
+          <button type="button" class="tip-btn" data-tip="10">10%</button>
+          <button type="button" class="tip-btn" data-tip="15">15%</button>
+          <button type="button" class="tip-btn" data-tip="25">25%</button>
+          <button type="button" class="tip-btn" data-tip="50">50%</button>
+          <input 
+            type="number" 
+            id="custom-tip-input" 
+            placeholder="Custom" 
+            min="0" 
+            step="1" 
+          />
+        </div>
+      </div>
+
+      <!-- People Input -->
+      <div class="form-group">
+        <div class="label-row">
+          <label for="people-input">Number of People</label>
+          <span id="error-message" class="error-text hidden">Can't be zero</span>
+        </div>
+        <div class="input-wrapper" id="people-wrapper">
+          <span class="icon">👤</span>
+          <input 
+            type="number" 
+            id="people-input" 
+            placeholder="1" 
+            min="1" 
+            step="1" 
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Right Column: Outputs & Reset -->
+    <section class="display-section">
+      <div class="display-results">
+        <div class="result-row">
+          <div class="result-label">
+            <span class="title">Tip Amount</span>
+            <span class="subtitle">/ person</span>
+          </div>
+          <span class="amount" id="tip-amount">$0.00</span>
+        </div>
+
+        <div class="result-row">
+          <div class="result-label">
+            <span class="title">Total</span>
+            <span class="subtitle">/ person</span>
+          </div>
+          <span class="amount" id="total-amount">$0.00</span>
+        </div>
+      </div>
+
+      <button type="button" id="reset-btn" class="reset-btn" disabled>RESET</button>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+:root {
+  --primary-color: #26c2ae;
+  --primary-light: #9fe8df;
+  --dark-navy: #00474b;
+  --dark-grayish-cyan: #5e7a7d;
+  --grayish-cyan: #7f9d9f;
+  --light-grayish-cyan: #c5e4e7;
+  --very-light-cyan: #f3f9fa;
+  --white: #ffffff;
+  --error: #e17457;
+  --font-family: 'Space Mono', monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--light-grayish-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+/* Card Container */
+.calculator-card {
+  background-color: var(--white);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  max-width: 920px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Form inputs section */
+.input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+label {
+  font-size: 0.95rem;
+  color: var(--dark-grayish-cyan);
+}
+
+.label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.error-text {
+  color: var(--error);
+  font-size: 0.85rem;
+}
+
+.error-text.hidden {
+  display: none;
+}
+
+/* Input Fields */
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper .currency-symbol,
+.input-wrapper .icon {
+  position: absolute;
+  left: 1rem;
+  color: var(--grayish-cyan);
+  font-size: 1.1rem;
+  pointer-events: none;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 0.5rem 1rem 0.5rem 2.2rem;
+  font-size: 1.5rem;
+  color: var(--dark-navy);
+  text-align: right;
+  background-color: var(--very-light-cyan);
+  border: 2px solid transparent;
+  border-radius: 0.4rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+input[type="number"]:focus {
+  border-color: var(--primary-color);
+}
+
+/* Chrome, Safari, Edge, Opera number arrows remove */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.input-wrapper.error-state input {
+  border-color: var(--error);
+}
+
+/* Tip Buttons Grid */
+.tip-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.tip-btn {
+  background-color: var(--dark-navy);
+  color: var(--white);
+  border: none;
+  border-radius: 0.4rem;
+  font-size: 1.25rem;
+  padding: 0.6rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tip-btn:hover {
+  background-color: var(--primary-light);
+  color: var(--dark-navy);
+}
+
+.tip-btn.active {
+  background-color: var(--primary-color);
+  color: var(--dark-navy);
+}
+
+#custom-tip-input {
+  padding: 0.5rem 0.75rem;
+  font-size: 1.25rem;
+}
+
+/* Display / Output Panel */
+.display-section {
+  background-color: var(--dark-navy);
+  border-radius: 1rem;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.display-results {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.result-label {
+  display: flex;
+  flex-direction: column;
+}
+
+.result-label .title {
+  color: var(--white);
+  font-size: 0.95rem;
+}
+
+.result-label .subtitle {
+  color: var(--grayish-cyan);
+  font-size: 0.8rem;
+}
+
+.amount {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+/* Reset Button */
+.reset-btn {
+  background-color: var(--primary-color);
+  color: var(--dark-navy);
+  border: none;
+  border-radius: 0.4rem;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.reset-btn:hover:not(:disabled) {
+  background-color: var(--primary-light);
+}
+
+.reset-btn:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .calculator-card {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+  }
+
+  .tip-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .amount {
+    font-size: 1.8rem;
+  }
+}
